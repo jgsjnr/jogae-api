@@ -58,9 +58,9 @@ public class JogadorController {
         if(!jogadorOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado!");
         }
-        var jogador = jogadorOptional.get();
+        var jogador = new Jogador();
         BeanUtils.copyProperties(jogadorDto, jogador);
-        jogador.setIdNick(jogadorOptional.get().getIdNick());
+        jogador.setIdNick(idNick);
         return ResponseEntity.status(HttpStatus.OK).body(jogadorService.save(jogador));
     }
 }
