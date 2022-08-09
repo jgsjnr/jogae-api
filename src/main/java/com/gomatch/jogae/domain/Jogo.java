@@ -1,5 +1,7 @@
 package com.gomatch.jogae.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +26,8 @@ public class Jogo {
     private String nmJogo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "genero_jogo_id")
+    @JsonIgnore
+    @JoinColumn(name = "ID_GENERO_JOGO")
     private GeneroJogo generoJogo;
 
     @OneToMany(mappedBy = "jogo")
