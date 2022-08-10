@@ -41,36 +41,36 @@ public class JogoController {
         jogo.setGeneroJogo(generoJogoOptional.get());
         return ResponseEntity.status(HttpStatus.CREATED).body(jogoService.save(jogo));
     }
-    /*@GetMapping
-    public ResponseEntity<List<GeneroJogo>> getAllGeneroJogo(){
-        return ResponseEntity.status(HttpStatus.OK).body(generoJogoService.findAll());
+    @GetMapping
+    public ResponseEntity<List<Jogo>> getAllJogo(){
+        return ResponseEntity.status(HttpStatus.OK).body(jogoService.findAll());
     }
-    @GetMapping("/{idGeneroJogo}")
-    public ResponseEntity<Object> getOneGeneroJogo(@PathVariable(value = "idGeneroJogo") Integer idGeneroJogo){
-        Optional<GeneroJogo> generoJogoOptional = generoJogoService.findById(idGeneroJogo);
-        if(!generoJogoOptional.isPresent()){
+    @GetMapping("/{idJogo}")
+    public ResponseEntity<Object> getOneJogo(@PathVariable(value = "idJogo") Integer idJogo){
+        Optional<Jogo> jogoOptional = jogoService.findById(idJogo);
+        if(!jogoOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado!");
         }
-        return ResponseEntity.status(HttpStatus.OK).body(generoJogoOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body(jogoOptional.get());
     }
-    @DeleteMapping("/{idGeneroJogo}")
-    public ResponseEntity<Object> deleteGeneroJogo(@PathVariable(value = "idGeneroJogo") Integer idGeneroJogo){
-        Optional<GeneroJogo> generoJogoOptional = generoJogoService.findById(idGeneroJogo);
-        if(!generoJogoOptional.isPresent()){
+    @DeleteMapping("/{idJogo}")
+    public ResponseEntity<Object> deleteJogo(@PathVariable(value = "idJogo") Integer idJogo){
+        Optional<Jogo> jogoOptional = jogoService.findById(idJogo);
+        if(!jogoOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado!");
         }
-        generoJogoService.delete(generoJogoOptional.get());
+        jogoService.delete(jogoOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body("Removido com sucesso!");
     }
-    @PutMapping("/{idGeneroJogo}")
-    public ResponseEntity<Object> updateGeneroJogo(@PathVariable(value = "idGeneroJogo") Integer idGeneroJogo, @RequestBody JogadorDto jogadorDto){
-        Optional<GeneroJogo> generoJogoOptional = generoJogoService.findById(idGeneroJogo);
-        if(!generoJogoOptional.isPresent()){
+    @PutMapping("/{idJogo}")
+    public ResponseEntity<Object> updateJogo(@PathVariable(value = "idJogo") Integer idJogo, @RequestBody JogoDto jogoDto){
+        Optional<Jogo> jogoOptional = jogoService.findById(idJogo);
+        if(!jogoOptional.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado!");
         }
-        var generoJogo = new GeneroJogo();
-        BeanUtils.copyProperties(generoJogoOptional, generoJogo);
-        generoJogo.setIdGeneroJogo(idGeneroJogo);
-        return ResponseEntity.status(HttpStatus.OK).body(generoJogoService.save(generoJogo));
-    }*/
+        var jogo = new Jogo();
+        BeanUtils.copyProperties(jogoOptional, jogo);
+        jogo.setIdJogo(idJogo);
+        return ResponseEntity.status(HttpStatus.OK).body(jogoService.save(jogo));
+    }
 }
