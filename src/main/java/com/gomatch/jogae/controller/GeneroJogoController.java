@@ -1,7 +1,6 @@
 package com.gomatch.jogae.controller;
 
 import com.gomatch.jogae.domain.GeneroJogo;
-import com.gomatch.jogae.domain.Jogador;
 import com.gomatch.jogae.dto.GeneroJogoDto;
 import com.gomatch.jogae.dto.JogadorDto;
 import com.gomatch.jogae.service.GeneroJogoService;

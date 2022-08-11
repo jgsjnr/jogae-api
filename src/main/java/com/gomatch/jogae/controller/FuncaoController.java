@@ -1,11 +1,8 @@
 package com.gomatch.jogae.controller;
 
 import com.gomatch.jogae.domain.Funcao;
-import com.gomatch.jogae.domain.Jogador;
 import com.gomatch.jogae.dto.FuncaoDto;
-import com.gomatch.jogae.dto.JogadorDto;
 import com.gomatch.jogae.service.FuncaoService;
-import com.gomatch.jogae.service.JogadorService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +23,8 @@ public class FuncaoController {
         BeanUtils.copyProperties(funcaoDto, funcao);
         return ResponseEntity.status(HttpStatus.CREATED).body(funcaoService.save(funcao));
     }
-    @GetMapping
-    public ResponseEntity<List<Funcao>> getAllJogador(){
+    @GetMapping()
+    public ResponseEntity<List<Funcao>> getAllFuncao(){
         return ResponseEntity.status(HttpStatus.OK).body(funcaoService.findAll());
     }
     @GetMapping("/{idFuncao}")

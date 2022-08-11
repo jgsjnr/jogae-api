@@ -34,11 +34,11 @@ public class Grupo {
     private OffsetDateTime dhExclusao;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "jogo_id")
+    @JoinColumn(name = "id_jogo")
     private Jogo jogo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "genero_jogo_id")
+    @JoinColumn(name = "id_genero_jogo")
     private GeneroJogo generoJogo;
 
     @OneToMany(mappedBy = "grupo")

@@ -49,18 +49,6 @@ public class CadastroUsuario {
     @Column(nullable = false)
     private OffsetDateTime dhExclusao;
 
-    @Column(nullable = false)
-    private OffsetDateTime dhConvite;
-
-    @Column(nullable = false)
-    private OffsetDateTime dhAceite;
-
-    @Column(nullable = false)
-    private Boolean flAceite;
-
-    @Column(nullable = false)
-    private Boolean flAlterarSenha;
-
     @Column
     private OffsetDateTime dhUltimoAcesso;
 
@@ -70,24 +58,34 @@ public class CadastroUsuario {
     @Column
     private Integer nrTentativaAcesso;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "status_cadastro_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "nm_nick", nullable = false)
+    private Jogador nmNick;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_status_cadastro", nullable = false)
     private StatusCadastro statusCadastro;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "funcao_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_funcao", nullable = false)
     private Funcao funcao;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "grupo_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_grupo", nullable = false)
     private Grupo grupo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comunidade_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_comunidade", nullable = false)
     private Comunidade comunidade;
 
+    @OneToMany(mappedBy = "usuarioPrimario")
+    private Set<MatchJogadores> usuarioPrimarioMatchJogadoress;
+
+    @OneToMany(mappedBy = "usuarioMatch")
+    private Set<MatchJogadores> usuarioMatchMatchJogadoress;
+
     @OneToMany(mappedBy = "usuario")
-    private Set<MatchJogadores> usuarioMatchJogadoress;
+    private Set<Prateleira> usuarioPrateleiras;
 
     public Integer getIdUsuario() {
         return idUsuario;
@@ -169,38 +167,6 @@ public class CadastroUsuario {
         this.dhExclusao = dhExclusao;
     }
 
-    public OffsetDateTime getDhConvite() {
-        return dhConvite;
-    }
-
-    public void setDhConvite(final OffsetDateTime dhConvite) {
-        this.dhConvite = dhConvite;
-    }
-
-    public OffsetDateTime getDhAceite() {
-        return dhAceite;
-    }
-
-    public void setDhAceite(final OffsetDateTime dhAceite) {
-        this.dhAceite = dhAceite;
-    }
-
-    public Boolean getFlAceite() {
-        return flAceite;
-    }
-
-    public void setFlAceite(final Boolean flAceite) {
-        this.flAceite = flAceite;
-    }
-
-    public Boolean getFlAlterarSenha() {
-        return flAlterarSenha;
-    }
-
-    public void setFlAlterarSenha(final Boolean flAlterarSenha) {
-        this.flAlterarSenha = flAlterarSenha;
-    }
-
     public OffsetDateTime getDhUltimoAcesso() {
         return dhUltimoAcesso;
     }
@@ -223,6 +189,14 @@ public class CadastroUsuario {
 
     public void setNrTentativaAcesso(final Integer nrTentativaAcesso) {
         this.nrTentativaAcesso = nrTentativaAcesso;
+    }
+
+    public Jogador getNmNick() {
+        return nmNick;
+    }
+
+    public void setNmNick(final Jogador nmNick) {
+        this.nmNick = nmNick;
     }
 
     public StatusCadastro getStatusCadastro() {
@@ -257,12 +231,30 @@ public class CadastroUsuario {
         this.comunidade = comunidade;
     }
 
-    public Set<MatchJogadores> getUsuarioMatchJogadoress() {
-        return usuarioMatchJogadoress;
+    public Set<MatchJogadores> getUsuarioPrimarioMatchJogadoress() {
+        return usuarioPrimarioMatchJogadoress;
     }
 
-    public void setUsuarioMatchJogadoress(final Set<MatchJogadores> usuarioMatchJogadoress) {
-        this.usuarioMatchJogadoress = usuarioMatchJogadoress;
+    public void setUsuarioPrimarioMatchJogadoress(
+            final Set<MatchJogadores> usuarioPrimarioMatchJogadoress) {
+        this.usuarioPrimarioMatchJogadoress = usuarioPrimarioMatchJogadoress;
+    }
+
+    public Set<MatchJogadores> getUsuarioMatchMatchJogadoress() {
+        return usuarioMatchMatchJogadoress;
+    }
+
+    public void setUsuarioMatchMatchJogadoress(
+            final Set<MatchJogadores> usuarioMatchMatchJogadoress) {
+        this.usuarioMatchMatchJogadoress = usuarioMatchMatchJogadoress;
+    }
+
+    public Set<Prateleira> getUsuarioPrateleiras() {
+        return usuarioPrateleiras;
+    }
+
+    public void setUsuarioPrateleiras(final Set<Prateleira> usuarioPrateleiras) {
+        this.usuarioPrateleiras = usuarioPrateleiras;
     }
 
 }

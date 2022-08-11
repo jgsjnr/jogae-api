@@ -20,6 +20,9 @@ public class GeneroJogo {
     @Column(nullable = false, length = 40)
     private String nmGeneroJogo;
 
+    @Column(nullable = false)
+    private Integer vlGenero;
+
     @OneToMany(mappedBy = "generoJogo")
     private Set<Jogo> generoJogoJogos;
 
@@ -43,6 +46,14 @@ public class GeneroJogo {
 
     public void setNmGeneroJogo(final String nmGeneroJogo) {
         this.nmGeneroJogo = nmGeneroJogo;
+    }
+
+    public Integer getVlGenero() {
+        return vlGenero;
+    }
+
+    public void setVlGenero(final Integer vlGenero) {
+        this.vlGenero = vlGenero;
     }
 
     public Set<Jogo> getGeneroJogoJogos() {

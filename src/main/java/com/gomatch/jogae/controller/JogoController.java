@@ -2,8 +2,6 @@ package com.gomatch.jogae.controller;
 
 import com.gomatch.jogae.domain.GeneroJogo;
 import com.gomatch.jogae.domain.Jogo;
-import com.gomatch.jogae.dto.GeneroJogoDto;
-import com.gomatch.jogae.dto.JogadorDto;
 import com.gomatch.jogae.dto.JogoDto;
 import com.gomatch.jogae.service.GeneroJogoService;
 import com.gomatch.jogae.service.JogoService;

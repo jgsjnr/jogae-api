@@ -1,7 +1,5 @@
 package com.gomatch.jogae.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,9 +23,14 @@ public class Jogo {
     @Column(nullable = false, length = 60)
     private String nmJogo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
-    @JoinColumn(name = "ID_GENERO_JOGO")
+    @Column(nullable = false)
+    private Integer vlJogo;
+
+    @Column(nullable = false)
+    private Integer rankJogo;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_genero_jogo")
     private GeneroJogo generoJogo;
 
     @OneToMany(mappedBy = "jogo")
@@ -35,6 +38,9 @@ public class Jogo {
 
     @OneToMany(mappedBy = "jogo")
     private Set<Comunidade> jogoComunidades;
+
+    @OneToMany(mappedBy = "jogo")
+    private Set<Prateleira> jogoPrateleiras;
 
     public Integer getIdJogo() {
         return idJogo;
@@ -50,6 +56,22 @@ public class Jogo {
 
     public void setNmJogo(final String nmJogo) {
         this.nmJogo = nmJogo;
+    }
+
+    public Integer getVlJogo() {
+        return vlJogo;
+    }
+
+    public void setVlJogo(final Integer vlJogo) {
+        this.vlJogo = vlJogo;
+    }
+
+    public Integer getRankJogo() {
+        return rankJogo;
+    }
+
+    public void setRankJogo(final Integer rankJogo) {
+        this.rankJogo = rankJogo;
     }
 
     public GeneroJogo getGeneroJogo() {
@@ -74,6 +96,14 @@ public class Jogo {
 
     public void setJogoComunidades(final Set<Comunidade> jogoComunidades) {
         this.jogoComunidades = jogoComunidades;
+    }
+
+    public Set<Prateleira> getJogoPrateleiras() {
+        return jogoPrateleiras;
+    }
+
+    public void setJogoPrateleiras(final Set<Prateleira> jogoPrateleiras) {
+        this.jogoPrateleiras = jogoPrateleiras;
     }
 
 }

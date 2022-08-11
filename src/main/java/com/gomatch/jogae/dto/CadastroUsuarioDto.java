@@ -16,10 +16,6 @@ public class CadastroUsuarioDto implements Serializable {
     private OffsetDateTime dhInclusao;
     private OffsetDateTime dhAtualizacao;
     private OffsetDateTime dhExclusao;
-    private OffsetDateTime dhConvite;
-    private OffsetDateTime dhAceite;
-    private Boolean flAceite;
-    private Boolean flAlterarSenha;
     private OffsetDateTime dhUltimoAcesso;
     private OffsetDateTime dhAtualizacaoSenha;
     private Integer nrTentativaAcesso;
@@ -27,7 +23,7 @@ public class CadastroUsuarioDto implements Serializable {
     public CadastroUsuarioDto() {
     }
 
-    public CadastroUsuarioDto(Integer idUsuario, String nmLogin, String nmSenha, String nmUsuario, String cdEmail, Boolean flAtualizaDados, LocalDate dtNascimento, OffsetDateTime dhInclusao, OffsetDateTime dhAtualizacao, OffsetDateTime dhExclusao, OffsetDateTime dhConvite, OffsetDateTime dhAceite, Boolean flAceite, Boolean flAlterarSenha, OffsetDateTime dhUltimoAcesso, OffsetDateTime dhAtualizacaoSenha, Integer nrTentativaAcesso) {
+    public CadastroUsuarioDto(Integer idUsuario, String nmLogin, String nmSenha, String nmUsuario, String cdEmail, Boolean flAtualizaDados, LocalDate dtNascimento, OffsetDateTime dhInclusao, OffsetDateTime dhAtualizacao, OffsetDateTime dhExclusao, OffsetDateTime dhUltimoAcesso, OffsetDateTime dhAtualizacaoSenha, Integer nrTentativaAcesso) {
         this.idUsuario = idUsuario;
         this.nmLogin = nmLogin;
         this.nmSenha = nmSenha;
@@ -38,10 +34,6 @@ public class CadastroUsuarioDto implements Serializable {
         this.dhInclusao = dhInclusao;
         this.dhAtualizacao = dhAtualizacao;
         this.dhExclusao = dhExclusao;
-        this.dhConvite = dhConvite;
-        this.dhAceite = dhAceite;
-        this.flAceite = flAceite;
-        this.flAlterarSenha = flAlterarSenha;
         this.dhUltimoAcesso = dhUltimoAcesso;
         this.dhAtualizacaoSenha = dhAtualizacaoSenha;
         this.nrTentativaAcesso = nrTentativaAcesso;
@@ -127,38 +119,6 @@ public class CadastroUsuarioDto implements Serializable {
         this.dhExclusao = dhExclusao;
     }
 
-    public OffsetDateTime getDhConvite() {
-        return dhConvite;
-    }
-
-    public void setDhConvite(OffsetDateTime dhConvite) {
-        this.dhConvite = dhConvite;
-    }
-
-    public OffsetDateTime getDhAceite() {
-        return dhAceite;
-    }
-
-    public void setDhAceite(OffsetDateTime dhAceite) {
-        this.dhAceite = dhAceite;
-    }
-
-    public Boolean getFlAceite() {
-        return flAceite;
-    }
-
-    public void setFlAceite(Boolean flAceite) {
-        this.flAceite = flAceite;
-    }
-
-    public Boolean getFlAlterarSenha() {
-        return flAlterarSenha;
-    }
-
-    public void setFlAlterarSenha(Boolean flAlterarSenha) {
-        this.flAlterarSenha = flAlterarSenha;
-    }
-
     public OffsetDateTime getDhUltimoAcesso() {
         return dhUltimoAcesso;
     }
@@ -198,10 +158,6 @@ public class CadastroUsuarioDto implements Serializable {
                 Objects.equals(this.dhInclusao, entity.dhInclusao) &&
                 Objects.equals(this.dhAtualizacao, entity.dhAtualizacao) &&
                 Objects.equals(this.dhExclusao, entity.dhExclusao) &&
-                Objects.equals(this.dhConvite, entity.dhConvite) &&
-                Objects.equals(this.dhAceite, entity.dhAceite) &&
-                Objects.equals(this.flAceite, entity.flAceite) &&
-                Objects.equals(this.flAlterarSenha, entity.flAlterarSenha) &&
                 Objects.equals(this.dhUltimoAcesso, entity.dhUltimoAcesso) &&
                 Objects.equals(this.dhAtualizacaoSenha, entity.dhAtualizacaoSenha) &&
                 Objects.equals(this.nrTentativaAcesso, entity.nrTentativaAcesso);
@@ -209,7 +165,7 @@ public class CadastroUsuarioDto implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(idUsuario, nmLogin, nmSenha, nmUsuario, cdEmail, flAtualizaDados, dtNascimento, dhInclusao, dhAtualizacao, dhExclusao, dhConvite, dhAceite, flAceite, flAlterarSenha, dhUltimoAcesso, dhAtualizacaoSenha, nrTentativaAcesso);
+        return Objects.hash(idUsuario, nmLogin, nmSenha, nmUsuario, cdEmail, flAtualizaDados, dtNascimento, dhInclusao, dhAtualizacao, dhExclusao, dhUltimoAcesso, dhAtualizacaoSenha, nrTentativaAcesso);
     }
 
     @Override
@@ -225,10 +181,6 @@ public class CadastroUsuarioDto implements Serializable {
                 "dhInclusao = " + dhInclusao + ", " +
                 "dhAtualizacao = " + dhAtualizacao + ", " +
                 "dhExclusao = " + dhExclusao + ", " +
-                "dhConvite = " + dhConvite + ", " +
-                "dhAceite = " + dhAceite + ", " +
-                "flAceite = " + flAceite + ", " +
-                "flAlterarSenha = " + flAlterarSenha + ", " +
                 "dhUltimoAcesso = " + dhUltimoAcesso + ", " +
                 "dhAtualizacaoSenha = " + dhAtualizacaoSenha + ", " +
                 "nrTentativaAcesso = " + nrTentativaAcesso + ")";

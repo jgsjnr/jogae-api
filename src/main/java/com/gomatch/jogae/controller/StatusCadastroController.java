@@ -1,8 +1,6 @@
 package com.gomatch.jogae.controller;
 
-import com.gomatch.jogae.domain.Jogador;
 import com.gomatch.jogae.domain.StatusCadastro;
-import com.gomatch.jogae.dto.JogadorDto;
 import com.gomatch.jogae.dto.StatusCadastroDto;
 import com.gomatch.jogae.service.StatusCadastroService;
 import org.springframework.beans.BeanUtils;

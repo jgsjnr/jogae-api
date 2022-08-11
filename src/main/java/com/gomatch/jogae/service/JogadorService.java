@@ -22,9 +22,9 @@ public class JogadorService {
 
     public List<Jogador> findAll(){return jogadorRepository.findAll();}
 
-    public boolean existsByIdNick(Integer idNick) {return  jogadorRepository.existsById(idNick);}
+    public boolean existsByIdNick(String nmNick) {return  jogadorRepository.existsById(nmNick);}
 
-    public Optional<Jogador> findById(Integer idNick) {
+    public Optional<Jogador> findById(String idNick) {
         return jogadorRepository.findById(idNick);
     }
     @Transactional

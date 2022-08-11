@@ -20,20 +20,15 @@ public class MatchJogadores {
     private Integer idMatch;
 
     @Column
-    private Boolean flMatchConvite;
+    private OffsetDateTime dhMatch;
 
-    @Column
-    private Boolean flMatchAceite;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_usuario_primario", nullable = false)
+    private CadastroUsuario usuarioPrimario;
 
-    @Column
-    private OffsetDateTime dhMatchConvite;
-
-    @Column
-    private OffsetDateTime dhMatchAceite;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private CadastroUsuario usuario;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_usuario_match", nullable = false)
+    private CadastroUsuario usuarioMatch;
 
     public Integer getIdMatch() {
         return idMatch;
@@ -43,44 +38,28 @@ public class MatchJogadores {
         this.idMatch = idMatch;
     }
 
-    public Boolean getFlMatchConvite() {
-        return flMatchConvite;
+    public OffsetDateTime getDhMatch() {
+        return dhMatch;
     }
 
-    public void setFlMatchConvite(final Boolean flMatchConvite) {
-        this.flMatchConvite = flMatchConvite;
+    public void setDhMatch(final OffsetDateTime dhMatch) {
+        this.dhMatch = dhMatch;
     }
 
-    public Boolean getFlMatchAceite() {
-        return flMatchAceite;
+    public CadastroUsuario getUsuarioPrimario() {
+        return usuarioPrimario;
     }
 
-    public void setFlMatchAceite(final Boolean flMatchAceite) {
-        this.flMatchAceite = flMatchAceite;
+    public void setUsuarioPrimario(final CadastroUsuario usuarioPrimario) {
+        this.usuarioPrimario = usuarioPrimario;
     }
 
-    public OffsetDateTime getDhMatchConvite() {
-        return dhMatchConvite;
+    public CadastroUsuario getUsuarioMatch() {
+        return usuarioMatch;
     }
 
-    public void setDhMatchConvite(final OffsetDateTime dhMatchConvite) {
-        this.dhMatchConvite = dhMatchConvite;
-    }
-
-    public OffsetDateTime getDhMatchAceite() {
-        return dhMatchAceite;
-    }
-
-    public void setDhMatchAceite(final OffsetDateTime dhMatchAceite) {
-        this.dhMatchAceite = dhMatchAceite;
-    }
-
-    public CadastroUsuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(final CadastroUsuario usuario) {
-        this.usuario = usuario;
+    public void setUsuarioMatch(final CadastroUsuario usuarioMatch) {
+        this.usuarioMatch = usuarioMatch;
     }
 
 }
