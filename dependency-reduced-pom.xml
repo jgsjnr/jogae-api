@@ -9,6 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.gomatch</groupId>
   <artifactId>jogae</artifactId>
+  <packaging>war</packaging>
   <name>jogae</name>
   <version>0.0.1-SNAPSHOT</version>
   <build>
@@ -48,6 +49,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+      <version>2.7.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-tomcat</artifactId>
       <version>2.7.2</version>
       <scope>provided</scope>
     </dependency>
