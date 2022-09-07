@@ -1,30 +1,35 @@
 package com.gomatch.jogae.algo;
 
 import com.gomatch.jogae.domain.Jogador;
-import com.gomatch.jogae.dto.JogadorDto;
 
 import java.util.List;
-import java.util.Map;
 
 public class Match {
-    private Jogador jogador;
+    private final Jogador jogador;
     private Jogador jogadorMatch;
-
-    private List<Jogador> candidatos;
+    private final List<Jogador> candidatos;
+    double pl1, test, pl2, result;
     private String[] players = null;
-
+    private final Genericos gen = new Genericos();
     public Match(Jogador jogador, List<Jogador> candidatos) {
-        //Player player_1 = new Player(Genericos.calculaHype(jogadorDto.getRankJogador()), jogadorDto.getVlJogador(), jogadorDto.getRankJogador());
         this.jogador = jogador;
         this.candidatos = candidatos;
+        newMatch();
     }
-    double pl1 = Genericos.gerarNumMatch(jogador.getVlJogador(), Genericos.calculaHype(jogador.getRankJogador()));
-    double test = 0;
+    //pl1 = gen.gerarNumMatch(jogador.getVlJogador(), Genericos.calculaHype(jogador.getRankJogador()));
     public void newMatch(){
+        result = 1;
+        test = 0;
+        this.pl1 = gen.gerarNumMatch(jogador.getVlJogador(),gen.calculaHype(jogador.getRankJogador()));
+        System.out.println("PL1: "+pl1);
+        System.out.println("Player 1: "+jogador.getNmNick());
         for(Jogador candidato: this.candidatos){
-            double pl2 = Genericos.gerarNumMatch(candidato.getVlJogador(), Genericos.calculaHype(candidato.getRankJogador()));
+            this.pl2 = gen.gerarNumMatch(candidato.getVlJogador(), gen.calculaHype(candidato.getRankJogador()));
+            System.out.println("Player 2: "+candidato.getNmNick());
+            System.out.println("PL2: "+pl2);
             double result = pl1 - pl2;
-            if(result < 0) result = result*-1;
+            System.out.println("RESULT: "+result);
+            if(result < 0) result *= -1;
             if(test <= result){
                 test = result;
                 jogadorMatch = candidato;

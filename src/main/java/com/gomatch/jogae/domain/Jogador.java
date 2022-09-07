@@ -12,6 +12,15 @@ import javax.persistence.OneToMany;
 @Entity
 public class Jogador {
 
+    public Jogador(String nmNick, Integer vlJogador, Integer rankJogador) {
+        this.nmNick = nmNick;
+        this.vlJogador = vlJogador;
+        this.rankJogador = rankJogador;
+    }
+
+    public Jogador() {
+    }
+
     @Id
     @Column(nullable = false, updatable = false, length = 60)
     private String nmNick;

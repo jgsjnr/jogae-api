@@ -9,8 +9,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.gomatch</groupId>
   <artifactId>jogae</artifactId>
+  <packaging>war</packaging>
   <name>jogae</name>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.3</version>
   <build>
     <plugins>
       <plugin>

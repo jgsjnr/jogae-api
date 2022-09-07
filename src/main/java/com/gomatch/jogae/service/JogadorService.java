@@ -24,8 +24,8 @@ public class JogadorService {
 
     public boolean existsByIdNick(String nmNick) {return  jogadorRepository.existsById(nmNick);}
 
-    public Optional<Jogador> findById(String idNick) {
-        return jogadorRepository.findById(idNick);
+    public Optional<Jogador> findById(String nmNick) {
+        return jogadorRepository.findById(nmNick);
     }
     @Transactional
     public void delete(Jogador jogador) {

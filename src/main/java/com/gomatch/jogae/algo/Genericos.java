@@ -1,7 +1,7 @@
 package com.gomatch.jogae.algo;
 
 public class Genericos {
-    public static int calculaDigitos(int value){
+    int calculaDigitos(int value){
         int result = 1;
         if(value >= 10){
             value = value/10;
@@ -9,7 +9,7 @@ public class Genericos {
         };
         return result;
     }
-    public static int calculaHype(int rank){
+    public int calculaHype(int rank){
         int biased = 0;
         {
             int digest = 0;
@@ -20,12 +20,13 @@ public class Genericos {
             return digest;
         }
     }
-    public static double gerarNumMatch(int value, int biased){
+    public double gerarNumMatch(int value, int biased){
         double matchValue = 0;
         int digits = 0;
         if(biased != 0){
             value += biased;
             digits = calculaDigitos(value);
+            System.out.println("Digitos: "+digits);
         }
         if(digits == 1) matchValue = value/10;
         else matchValue = value / Math.pow(10, digits);
