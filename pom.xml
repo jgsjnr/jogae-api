@@ -10,9 +10,9 @@
     </parent>
     <groupId>com.gomatch</groupId>
     <artifactId>jogae</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.3</version>
     <name>jogae</name>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>17</java.version>

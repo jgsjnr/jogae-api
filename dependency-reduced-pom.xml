@@ -9,7 +9,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.gomatch</groupId>
   <artifactId>jogae</artifactId>
-  <packaging>war</packaging>
   <name>jogae</name>
   <version>0.0.1-SNAPSHOT</version>
   <build>
@@ -164,6 +163,12 @@
           <groupId>org.xmlunit</groupId>
         </exclusion>
       </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.0</version>
+      <scope>provided</scope>
     </dependency>
   </dependencies>
   <properties>
