@@ -1,6 +1,8 @@
 package com.gomatch.jogae.controller;
 
+import com.gomatch.jogae.algo.Match;
 import com.gomatch.jogae.domain.Jogador;
+import com.gomatch.jogae.domain.MatchBody;
 import com.gomatch.jogae.domain.Teste;
 import com.gomatch.jogae.dto.JogadorDto;
 import com.gomatch.jogae.service.JogadorService;
@@ -70,5 +72,18 @@ public class JogadorController {
         BeanUtils.copyProperties(jogadorDto, jogador);
         jogador.setNmNick(nmNick);
         return ResponseEntity.status(HttpStatus.OK).body(jogadorService.save(jogador));
+    }
+
+    @GetMapping("/match")
+    public ResponseEntity<Object> getMatch(@RequestParam String player){
+        Optional<Jogador> jogadorOptional = jogadorService.findById(player);
+        Jogador jogador;
+        if(!jogadorOptional.isPresent()) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado");
+        else jogador = jogadorService.findById(player).get();
+        Match match = new Match(jogador, jogadorService.findAll());
+        MatchBody matchBody = new MatchBody();
+        matchBody.setPlayer_1(match.getPlayers()[0]);
+        matchBody.setPlayer_2(match.getPlayers()[1]);
+        return ResponseEntity.status(HttpStatus.CREATED).body(matchBody);
     }
 }
