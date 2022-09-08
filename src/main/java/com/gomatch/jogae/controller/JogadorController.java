@@ -78,10 +78,8 @@ public class JogadorController {
     public ResponseEntity<Object> getMatch(@RequestParam String player){
         var jogador = jogadorService.findById(player).get();
         if(jogador == null) return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado");
-        Match match = new Match(new Jogador(jogador.getNmNick(), jogador.getVlJogador(), jogador.getRankJogador()), jogadorService.findAll());
-        MatchBody matchBody = new MatchBody();
-        matchBody.setPlayer_1(match.getPlayers()[0]);
-        matchBody.setPlayer_2(match.getPlayers()[1]);
-        return ResponseEntity.status(HttpStatus.OK).body(matchBody);
+        Match match = new Match(jogador, jogadorService.findAll());
+        match.newMatch();
+        return ResponseEntity.status(HttpStatus.OK).body(match.getJogadoresMatch());
     }
 }

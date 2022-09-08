@@ -28,6 +28,9 @@ public class Genericos {
             digits = calculaDigitos(value);
             System.out.println("Digitos: "+digits);
         }
+        else{
+            digits = calculaDigitos(value);
+        }
         if(digits == 1) matchValue = value/10;
         else matchValue = value / Math.pow(10, digits);
         return matchValue;

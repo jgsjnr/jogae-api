@@ -2,47 +2,44 @@ package com.gomatch.jogae.algo;
 
 import com.gomatch.jogae.domain.Jogador;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Match {
     private final Jogador jogador;
-    private Jogador jogadorMatch;
+    private List<Jogador> jogadoresMatch = new ArrayList<Jogador>();
     private final List<Jogador> candidatos;
-    double pl1, test, pl2, result;
-    private String[] players = null;
     private final Genericos gen = new Genericos();
     public Match(Jogador jogador, List<Jogador> candidatos) {
         this.jogador = jogador;
         this.candidatos = candidatos;
-        newMatch();
+        this.jogadoresMatch.add(this.jogador);
     }
     //pl1 = gen.gerarNumMatch(jogador.getVlJogador(), Genericos.calculaHype(jogador.getRankJogador()));
     public void newMatch(){
-        result = 1;
-        test = 0;
-        this.pl1 = gen.gerarNumMatch(jogador.getVlJogador(),gen.calculaHype(jogador.getRankJogador()));
-        System.out.println("PL1: "+pl1);
-        System.out.println("Player 1: "+jogador.getNmNick());
+        this.jogadoresMatch.add(jogador);
+        double test = 1;
         for(Jogador candidato: this.candidatos){
-            this.pl2 = gen.gerarNumMatch(candidato.getVlJogador(), gen.calculaHype(candidato.getRankJogador()));
+            var jogador_1 = gen.gerarNumMatch(jogador.getVlJogador(),gen.calculaHype(jogador.getRankJogador())) ;
+            var jogador_2 = gen.gerarNumMatch(candidato.getVlJogador(), gen.calculaHype(candidato.getRankJogador()));
+            double res = Math.abs(jogador_1 - jogador_2);
+            if(res == 0) continue;
+            System.out.println("Player 1: "+jogador.getNmNick());
+            System.out.println("Match_1: "+gen.gerarNumMatch(jogador.getVlJogador(),gen.calculaHype(jogador.getRankJogador())));
             System.out.println("Player 2: "+candidato.getNmNick());
-            System.out.println("PL2: "+pl2);
-            double result = pl1 - pl2;
-            System.out.println("RESULT: "+result);
-            if(result < 0) result *= -1;
-            if(test <= result){
-                test = result;
-                jogadorMatch = candidato;
+            System.out.println("Match_2: "+gen.gerarNumMatch(candidato.getVlJogador(), gen.calculaHype(candidato.getRankJogador())));
+            System.out.println("RESULT: "+res);
+            if(res <= test){
+                test = res;
+                System.out.println("Resultado final: "+res);
+                jogadoresMatch.set(1, candidato);
+                System.out.println("Resultado atual: "+res+" Candidato atual: "+candidato.getNmNick());
             }
         }
-        this.players = new String[]{jogador.getNmNick(), jogadorMatch.getNmNick()};
     }
 
-    public String[] getPlayers() {
-        return players;
+    public List<Jogador> getJogadoresMatch() {
+        return jogadoresMatch;
     }
 
-    public void setPlayers(String[] players) {
-        this.players = players;
-    }
 }
